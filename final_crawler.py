@@ -111,22 +111,22 @@ def get_links(url):
 
     return internal_links, subdomain_links, external_links, document_links
 
-# def get_broken_links(url):
-#     internal_links, subdomain_links, external_links, document_links = get_links(
-#         url)
-#     all_links = internal_links | subdomain_links | external_links | document_links
-#     broken_urls = []
+def get_broken_links(url):
+    internal_links, subdomain_links, external_links, document_links = get_links(
+        url)
+    all_links = internal_links | subdomain_links | external_links | document_links
+    broken_urls = []
 
-#     def validate_url(url):
-#         response = requests.head(url)
-#         if response.status_code == 404:
-#             print(f"{RED}[*] Broken link: {url}{RESET}")
-#             broken_urls.append(url)
+    def validate_url(url):
+        response = requests.head(url)
+        if response.status_code == 404:
+            print(f"{RED}[*] Broken link: {url}{RESET}")
+            broken_urls.append(url)
 
-#     with ThreadPoolExecutor(max_workers=10) as executor:
-#         executor.map(validate_url, all_links)
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        executor.map(validate_url, all_links)
 
-#     return broken_urls
+    return broken_urls
 
 
 def extract_content(url):
