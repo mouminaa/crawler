@@ -194,7 +194,7 @@ def get_all_website_links(url):
 
 
 # function to crawl a web page and extract all links
-def crawl(url, max_urls=100000):
+def crawl(url, max_urls=10000):
     """
     Crawls a web page and extracts all links.
     You'll find all links in `external_urls` and `internal_urls` global set variables.
@@ -221,7 +221,7 @@ if __name__ == "__main__":
         description="Link Extractor Tool with Python")
     parser.add_argument("url", help="The URL to extract links from.")
     parser.add_argument(
-        "-m", "--max-urls", help="Number of max URLs to crawl, default is 30.", default=100000, type=int)
+        "-m", "--max-urls", help="Number of max URLs to crawl, default is 30.", default=10000, type=int)
 
     args = parser.parse_args()
     url = args.url
