@@ -17,6 +17,8 @@ document_urls = set()
 def test_is_valid():
    assert is_valid("http://spbu.ru") == True
    assert is_valid(seed_url) == True
+   assert is_valid("https://www.google.com/logo.png") == False
+   assert is_valid("https://www.youtube.com") == True
 
 
 def test_is_skip_link():
@@ -33,6 +35,9 @@ def test_extract_links():
    links = extract_links(seed_url, soup)
    assert len(links) == 0
    assert all(isinstance(link, str) for link in links)
+   assert all(link.startswith(seed_url) for link in links)
+   assert all(link not in external_urls for link in links)  
+   assert all(link not in subdomains for link in links)
 
 
 def test_get_links():
@@ -75,9 +80,12 @@ def test_extract_content():
            q.put(link)
 
    assert q.qsize() > 0
+   assert all(isinstance(link, str) for link in internal_links)
+   assert all(link.startswith(seed_url) for link in internal_links)
 
 
 def test_crawl():
    crawl(seed_url)
    assert q.qsize() > len(internal_urls) 
    assert len(visited) == 0
+   assert len(internal_urls) == 0

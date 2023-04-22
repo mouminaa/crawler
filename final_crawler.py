@@ -24,7 +24,7 @@ MEROON = colorama.Fore.LIGHTMAGENTA_EX
 CYAN = colorama.Fore.CYAN
 
 seed_url = "https://msu.ru"  # ... your seed URL here
-max_visits = 1000  # ... max number of pages to visit
+max_visits = 800  # ... max number of pages to visit
 num_workers = 20 # ... number of workers to run in parallel
 
 visited = set()
