@@ -23,7 +23,7 @@ ORANGE = colorama.Fore.LIGHTRED_EX
 MEROON = colorama.Fore.LIGHTMAGENTA_EX
 CYAN = colorama.Fore.CYAN
 
-seed_url = "https://spbu.ru"  # ... your seed URL here
+seed_url = "https://msu.ru"  # ... your seed URL here
 max_visits = 1000  # ... max number of pages to visit
 num_workers = 20 # ... number of workers to run in parallel
 
