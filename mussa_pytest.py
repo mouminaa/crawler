@@ -19,6 +19,9 @@ def test_is_valid():
    assert is_valid(seed_url) == True
    assert is_valid("https://www.google.com/logo.png") == False
    assert is_valid("https://www.youtube.com") == True
+   assert is_valid("https://www.vk.com") == True
+   assert is_valid("https://www.facebook.com") == True
+   assert is_valid("https://www.instagram.com") == True
 
 
 def test_is_skip_link():
